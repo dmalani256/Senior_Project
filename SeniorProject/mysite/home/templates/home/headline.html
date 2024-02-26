@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headlines</title>
+    </head>
+<body>
+    {% block body %}
+    {% for headline in headline_list %}
+    <div class = "row">
+        <div class = "col-md-3 offset-md-2"> <h6> {{headline.id}} </h6> <!--bootstrap have 12 columns, col-md-3 means this col span 3 col, offset will have a spacing in front for this column -->
+            <img class = "img-thumbnail" height="150px" src="{{headline.headline_image}}">
+        </div>
+        <div class = "col-md-4">
+            <h3>{{ headline.headline_name }} </h3>
+            <h5>{{ headline.headline_desc }} </h5>
+            <h6>{{ headline.headline_content }} </h6>
+        </div>
+        <div class = 'dropdown col-md-2'>
+            <button type = 'button' class = 'btn btn-primary dropdown-toggle' data-toggle = 'dropdown'> More </button>
+            <div class = 'dropdown-menu' aria-labelledby="dropdownMenuButton">
+                <a class = 'dropdown-item' href = "{% url 'home:detail' headline.id %}"> Details </a>
+                <a class = 'dropdown-item' href = "{% url 'home:update_HL' headline.id %}"> Edit </a>
+                <a class = 'dropdown-item' href = "{% url 'home:delete_HL' headline.id %}"> Delete </a>
+            </div>
+        </div>
+        <!-- <div class = "col-md-2 ">
+            
+            <a href = "{% url 'home:detail' headline.id %}" class = "btn btn-primary">Details</a>
+            <a href = "{% url 'home:update_HL' headline.id %}" class = "btn btn-primary">Update</a>
+        </div> -->
+    </div>
+    {% endfor %}    
+    {% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+{% block body %} 
+<form method="POST" class = 'form-inline'>
+    {% csrf_token %}
+    <div class = row>
+
+
+        <div class = 'col'>
+            <label for="{{ form.headline_name.id_for_label}}">Name:</label>
+            <input type="text" name="{{ form.headline_name.name }}" value="{{ headline.headline_name }}" id="{{ form.headline_name.id_for_label }}">    
+        </div>
+        <div class = 'col'>
+            <label for="{{ form.headline_desc.id_for_label }}">Description:</label>
+            <input type="text" name="{{ form.headline_desc.name }}" value="{{ headline.headline_desc }}" id="{{ form.headline_desc.id_for_label }}">
+        </div>
+        <div class = 'col'>
+            <label for="{{ form.headline_content.id_for_label }}">Content:</label>
+            <input type="text" name="{{ form.headline_content.name }}" value="{{ headline.headline_content }}" id="{{ form.headline_content.id_for_label }}">
+        </div>
+        <div class = 'col'>
+            <label for="{{ form.headline_image.id_for_label }}">Image :</label>
+            <input type="text" name="{{ form.headline_image.name }}" value="{{ headline.headline_image }}" id="{{ form.field3.id_for_label }}">
+        </div>
+        <div class = 'col'>
+            <button type="submit" class = 'btn btn-dark'>Save</button>
+        </div>
+    </div>
+    
+</form>
+<!-- Display the existing item details in the appropriate form fields -->
+
+{% endblock %}
